@@ -26,7 +26,7 @@ export default function Login({ history }) {
         <label htmlFor="email">
           E-mail
           <input
-            placeholder="Your best e-mail"
+            placeholder="ex.: company@email.com"
             id="email"
             type="email"
             value={email}

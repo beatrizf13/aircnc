@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, Image, AsyncStorage } from 'react-native';
+import { SafeAreaView, Image, AsyncStorage, Alert } from 'react-native';
+import socketio from 'socket.io-client';
 
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import SpotList from '../../components/SpotList';
@@ -10,6 +11,22 @@ import styles from './styles';
 
 export default function List({ navigation }) {
   const [techs, setTechs] = useState([]);
+
+  useEffect(() => {
+    AsyncStorage.getItem('user').then(user_id => {
+      const socket = socketio('http://192.168.1.9:3333', {
+        query: { user_id },
+      });
+
+      socket.on('booking_response', booking => {
+        Alert.alert(
+          `Your booking in ${booking.spot.company} at ${booking.date} was ${
+            booking.approved ? 'approved' : 'reject'
+          }`
+        );
+      });
+    });
+  }, []);
 
   useEffect(() => {
     AsyncStorage.getItem('techs').then(storagedTechs => {

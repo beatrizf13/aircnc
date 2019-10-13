@@ -42,7 +42,7 @@ export default function Login({ navigation }) {
 
       navigation.navigate('List');
     } catch (err) {
-      Alert.alert('Sorry, something went wrong. 😔.');
+      Alert.alert('Sorry, something went wrong. 😔');
     }
   }
 

@@ -31,8 +31,10 @@ const Container = styled.div`
       }
     }
   }
+`;
 
-  .notifications {
+export const RequestContainer = styled.div`
+  ul.notifications {
     list-style: none;
     margin-bottom: 15px;
 
@@ -40,18 +42,24 @@ const Container = styled.div`
       font-size: 16px;
       line-height: 24px;
 
+      p {
+        font-size: 14px;
+        margin-bottom: 0;
+      }
+
       button {
+        background: none;
         margin-right: 10px;
         border: 0;
         font-weight: bold;
         margin-top: 10px;
         cursor: pointer;
-        .accept {
-          color: #84c870;
-        }
-        .reject {
-          color: #e55e5e;
-        }
+      }
+      .accept {
+        color: #84c870;
+      }
+      .reject {
+        color: #e55e5e;
       }
     }
   }
